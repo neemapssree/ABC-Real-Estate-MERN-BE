@@ -87,7 +87,7 @@ const initiateEmail = async (id,orderId) => {
         auth: {
           // TODO: replace `user` and `pass` values from <https://forwardemail.net>
           user: "testneema123@gmail.com",
-          pass: "ntrt ktmi oekt gbtw",
+          pass: "ntrt ktmi oekt gbtw",            //need to create app password of google account/other account
         },
         port: 465, // Gmail SMTP port for SSL
         host: 'smtp.gmail.com', // Gmail SMTP server

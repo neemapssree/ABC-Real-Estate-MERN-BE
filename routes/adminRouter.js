@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const { addProperty, addTimeSlotData, deleteTimeSlotData } = require('../controllers/adminController');
+const { addProperty, addTimeSlotData, deleteTimeSlotData, updatePropData } = require('../controllers/adminController');
 
 const multer = require('multer');
 const { adminAuth } = require('../middlewares/authorization');
@@ -24,4 +24,5 @@ const upload = multer({storage:fileStorage});
 router.post('/addProperty',adminAuth,upload.single('image'), addProperty);      // before devaiting to addProeprty, will modify the image file using multer
 router.post('/addTimeSlotData',adminAuth,addTimeSlotData);
 router.post('/deleteTimeSlot',adminAuth,deleteTimeSlotData);
+router.post('/updatePropData',adminAuth, updatePropData);
 module.exports=router;

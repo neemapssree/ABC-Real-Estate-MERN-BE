@@ -2,6 +2,7 @@ const { json } = require('express');
 const PROPS = require('./Models/propSchema');
 const   PROP_SCHEDULES = require('./Models/propSchedules');
 const { response } = require('../app');
+const properties = require('./Models/propSchema');
 
 const addProperty = async (req,res) => {
     try{
@@ -97,5 +98,22 @@ const deleteTimeSlotData = async (req,res) => {
         console.log(err);
     }
 };
+
+const updatePropData = (req,res) => {
+    try {
+        console.log(req.body, "update is:");
+        PROPS.updateOne({_id:req.body._id},
+            {$set:{propname:req.body.propname,
+                state:req.body.state,
+                type:req.body.type,
+                propcount:req.body.propcount,
+                propaddress:req.body.propaddress}}).then((response)=>{
+            res.status(200).json(response);
+        })
+         
+    }catch (err){
+        console.log(err);
+    }
+};
  
-module.exports= {addProperty,addTimeSlotData,deleteTimeSlotData}
+module.exports= {addProperty,addTimeSlotData,deleteTimeSlotData,updatePropData}

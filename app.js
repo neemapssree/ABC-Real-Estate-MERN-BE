@@ -6,8 +6,12 @@ var logger = require('morgan');
 const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
+
+//console.log(process.env.JWT_PASSWORD);
 //const paymentController = require('./controllers/paymentController');
 // const stripe = require('./routes/paymentRouter');
+
+
 
 
 var indexRouter = require('./routes/index');
@@ -25,9 +29,10 @@ connectDB();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(cors({
-  origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000/']
-}));
+// app.use(cors({
+//   origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000/']
+// }));
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
