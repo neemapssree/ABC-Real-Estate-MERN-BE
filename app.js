@@ -11,9 +11,6 @@ require('dotenv').config();
 //const paymentController = require('./controllers/paymentController');
 // const stripe = require('./routes/paymentRouter');
 
-
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
