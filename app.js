@@ -29,10 +29,10 @@ connectDB();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.use(cors({
-//   origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000']
-// }));
-app.use(cors());
+app.use(cors({
+  origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000']
+}));
+// app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());
