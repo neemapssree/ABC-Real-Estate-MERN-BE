@@ -26,10 +26,12 @@ connectDB();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(cors({
-  origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000']
-}));
-// app.use(cors());
+// app.use(cors({
+//   origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000']
+// }));
+
+// Enable CORS for all routes
+app.use(cors());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', 'true');
