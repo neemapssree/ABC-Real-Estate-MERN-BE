@@ -12,13 +12,6 @@ require('dotenv').config();
 //const paymentController = require('./controllers/paymentController');
 // const stripe = require('./routes/paymentRouter');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/userRouter');
-const authRouter = require('./routes/authRouter');
-const adminRouter = require('./routes/adminRouter');
-const paymentRouter = require('./routes/paymentRouter');
-const stripeWebHook = require('./controllers/stripeWebhook');
-
 var app = express();
 
 connectDB();
@@ -28,8 +21,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(cors({
-  origin:['https://realestate-app-2nxa.onrender.com','http://localhost:3000']
-}));
+  origin:['https://abcrealestate.onrender.com','http://localhost:3000']
+}))
 
 // Enable CORS for all routes
 // app.use(cors());
@@ -61,6 +54,12 @@ app.use(cors({
 //   res.status(200).end();
 // });
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
+const adminRouter = require('./routes/adminRouter');
+const paymentRouter = require('./routes/paymentRouter');
+const stripeWebHook = require('./controllers/stripeWebhook');
 
 
 app.use(logger('dev'));
