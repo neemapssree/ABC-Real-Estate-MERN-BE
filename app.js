@@ -7,6 +7,8 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
 
+app.options('*', cors());
+
 //console.log(process.env.JWT_PASSWORD);
 //const paymentController = require('./controllers/paymentController');
 // const stripe = require('./routes/paymentRouter');
@@ -48,15 +50,16 @@ app.use(cors({
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
+  allowedHeaders: 'Content-Type, Authorization',
   credentials: true,
 }));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
-// Optional: Additional headers
-// app.use((req, res, next) => {  
-//   next();
-// });
+
 
 app.use(logger('dev'));
 app.use(express.json());
