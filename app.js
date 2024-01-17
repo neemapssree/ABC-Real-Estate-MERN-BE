@@ -31,11 +31,16 @@ app.set('view engine', 'jade');
 // }));
 
 // Enable CORS for all routes
-app.use(cors());
+// app.use(cors());
 
+app.use(cors({
+  origin: '*',
+  credentials: true,
+}));
+
+// Optional: Additional headers
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');
-  // other headers
+  // Add any other headers you want here
   next();
 });
 
