@@ -33,16 +33,30 @@ app.set('view engine', 'jade');
 // Enable CORS for all routes
 // app.use(cors());
 
+// app.use(cors({
+//   origin: '*',
+//   credentials: true,
+// }));
+
+const allowedOrigins = ['http://localhost:3000', 'https://yourfrontenddomain.com'];
 app.use(cors({
-  origin: '*',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
   credentials: true,
 }));
 
+
 // Optional: Additional headers
-app.use((req, res, next) => {
-  // Add any other headers you want here
-  next();
-});
+// app.use((req, res, next) => {  
+//   next();
+// });
 
 app.use(logger('dev'));
 app.use(express.json());
