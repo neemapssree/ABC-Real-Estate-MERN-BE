@@ -28,7 +28,7 @@ const doSignUp = async (req,res) => {
 
 const doLogin = async (req,res) => {
     console.log(req.body, "step 1");
-    const user = await USERS.findOne({email:req.body.email});
+    const user = await USERS.findOne({email:req.body.email}).maxTimeMS(30000);
     console.log(user,"step 2");
     if(user){
         bcrypt.compare(req.body.password,user.password, (err,hashRes)=>{
