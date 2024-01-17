@@ -34,32 +34,32 @@ app.set('view engine', 'jade');
 // Enable CORS for all routes
 // app.use(cors());
 
-// app.use(cors({
-//   origin: '*',
-//   credentials: true,
-// }));
-
-const allowedOrigins = ['http://localhost:3000', 'https://realestate-app-2nxa.onrender.com'];
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type, Authorization',
+  origin: '*',
   credentials: true,
-  preflightContinue: true,  // Handle preflight requests manually
 }));
 
+// const allowedOrigins = ['http://localhost:3000', 'https://realestate-app-2nxa.onrender.com'];
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   allowedHeaders: 'Content-Type, Authorization',
+//   credentials: true,
+//   preflightContinue: true,  // Handle preflight requests manually
+// }));
+
 // Handle preflight requests
-app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.status(200).end();
-});
+// app.options('*', (req, res) => {
+//   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.status(200).end();
+// });
 
 
 
