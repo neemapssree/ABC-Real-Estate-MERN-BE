@@ -7,7 +7,6 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
 
-app.options('*', cors());
 
 //console.log(process.env.JWT_PASSWORD);
 //const paymentController = require('./controllers/paymentController');
@@ -52,11 +51,14 @@ app.use(cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Content-Type, Authorization',
   credentials: true,
+  preflightContinue: true,  // Handle preflight requests manually
 }));
 
-app.use((req, res, next) => {
+// Handle preflight requests
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
+  res.status(200).end();
 });
 
 
