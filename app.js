@@ -38,7 +38,7 @@ app.set('view engine', 'jade');
 //   credentials: true,
 // }));
 
-const allowedOrigins = ['http://localhost:3000', 'https://yourfrontenddomain.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://realestate-app-2nxa.onrender.com'];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
