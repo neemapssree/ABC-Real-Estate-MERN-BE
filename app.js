@@ -6,7 +6,6 @@ var logger = require('morgan');
 const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
-const rewriteMiddleware = require('./middlewares/rewriteMiddleware');
 
 
 //console.log(process.env.JWT_PASSWORD);
@@ -28,8 +27,6 @@ app.use(cors({
 // Serve static files from the 'build' directory
 app.use(express.static(path.join(__dirname, './build')));
 
-// Use the rewrite middleware
-app.use(rewriteMiddleware);
 
 // Enable CORS for all routes
 // app.use(cors());
