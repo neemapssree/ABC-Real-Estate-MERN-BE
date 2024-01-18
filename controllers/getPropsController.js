@@ -62,6 +62,7 @@ const dayWiseSlotFunction = (req,res) => {
         console.log(err);
     })
 }
+
 const cancelBooking = async (req,res) => {
     try {
         console.log(req.body, "Request is:");
