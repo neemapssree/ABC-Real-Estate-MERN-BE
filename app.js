@@ -7,7 +7,6 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 require('dotenv').config();
 
-
 //console.log(process.env.JWT_PASSWORD);
 //const paymentController = require('./controllers/paymentController');
 // const stripe = require('./routes/paymentRouter');
@@ -32,35 +31,12 @@ app.use(cors({
 //   credentials: true,
 // }));
 
-// const allowedOrigins = ['http://localhost:3000', 'https://realestate-app-2nxa.onrender.com'];
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   allowedHeaders: 'Content-Type, Authorization',
-//   credentials: true,
-//   preflightContinue: true,  // Handle preflight requests manually
-// }));
-
-// Handle preflight requests
-// app.options('*', (req, res) => {
-//   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.status(200).end();
-// });
-
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/userRouter');
 const authRouter = require('./routes/authRouter');
+var usersRouter = require('./routes/userRouter');
 const adminRouter = require('./routes/adminRouter');
 const paymentRouter = require('./routes/paymentRouter');
 const stripeWebHook = require('./controllers/stripeWebhook');
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -69,12 +45,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
 app.use('/auth', authRouter);
+app.use('/user', usersRouter);
 app.use('/admin', adminRouter);
 app.use('/payment', paymentRouter);
 app.use('/webhook', stripeWebHook);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
