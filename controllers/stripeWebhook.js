@@ -28,8 +28,7 @@ router.post('/webhook', async (req, res) => {
     case 'payment_intent.succeeded':
         const session = event.data.object;
         const orderId = session.metadata.orderId;
-        const paymentIntentId = session.payment_intent;    
-        
+        const paymentIntentId = session.payment_intent;        
 
         console.log('PaymentIntent was successful!');
     

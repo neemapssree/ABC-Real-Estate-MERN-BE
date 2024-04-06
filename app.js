@@ -27,7 +27,6 @@ app.use(cors({
 // Serve static files from the 'build' directory
 app.use(express.static(path.join(__dirname, './build')));
 
-
 // Enable CORS for all routes
 // app.use(cors());
 
